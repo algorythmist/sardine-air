@@ -5,11 +5,14 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 @Data
 @NoArgsConstructor
 public class Flight {
+
+	private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -33,7 +36,7 @@ public class Flight {
 		this.flightNumber = flightNumber;
 		this.origin = origin;
 		this.destination = destination;
-		this.flightDate = LocalDate.parse(flightDate);
+		this.flightDate = LocalDate.parse(flightDate, FORMATTER);
 		this.fares = fares;
 		this.inventory = inventory;
 	}

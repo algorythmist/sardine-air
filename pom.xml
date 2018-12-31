@@ -13,6 +13,7 @@
         <module>sardine-config</module>
         <module>sardine-search</module>
         <module>sardine-fares</module>
+        <module>sardine-booking</module>
     </modules>
 
 </project>

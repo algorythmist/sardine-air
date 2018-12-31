@@ -24,11 +24,11 @@ public class FlightRepositoryTest {
     public void testCrud() {
         Fares fares = new Fares("100");
         Inventory inventory = new Inventory(4);
-        Flight flight = new Flight("SA-101", "Sardinia", "Lithuania", "2019-2-12", fares, inventory);
+        Flight flight = new Flight("SA-101", "Sardinia", "Lithuania", "2019-02-12", fares, inventory);
         flightRepository.save(flight);
 
-        assertFalse(flightRepository.findByFlightNumberAndFlightDate("X", LocalDate.parse("2019-2-12")).isPresent());
-        assertTrue(flightRepository.findByFlightNumberAndFlightDate("SA-101", LocalDate.parse("2019-2-12")).isPresent());
+        assertFalse(flightRepository.findByFlightNumberAndFlightDate("X", LocalDate.parse("2019-02-12")).isPresent());
+        assertTrue(flightRepository.findByFlightNumberAndFlightDate("SA-101", LocalDate.parse("2019-02-12")).isPresent());
     }
 
 }
