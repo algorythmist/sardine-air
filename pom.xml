@@ -15,6 +15,7 @@
         <module>sardine-fares</module>
         <module>sardine-booking</module>
         <module>sardine-checkin</module>
+        <module>sardine-website</module>
     </modules>
 
 </project>
