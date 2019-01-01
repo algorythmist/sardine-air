@@ -21,6 +21,7 @@ public class FareController {
 	@RequestMapping("/get")
 	public Fare getFare(@RequestParam(value="flightNumber") String flightNumber, @RequestParam(value="flightDate") String flightDate){
 		LocalDate date = LocalDate.parse(flightDate);
-		return fareRepository.findByFlightNumberAndFlightDate(flightNumber, date).orElse(null);
+		return fareRepository.findByFlightNumberAndFlightDate(flightNumber, date)
+				.orElseThrow(() -> new ResourceNotFoundException());
 	}
 }

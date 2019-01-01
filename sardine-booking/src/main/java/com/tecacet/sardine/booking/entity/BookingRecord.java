@@ -10,6 +10,7 @@ import javax.persistence.OneToMany;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -32,8 +33,7 @@ public class BookingRecord {
     private BookingStatus status;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "bookingRecord")
-    Set<Passenger> passengers;
-
+    private Set<Passenger> passengers = new HashSet<>();
 
     public BookingRecord(String flightNumber, String from, String to,
                          LocalDate flightDate, LocalDateTime bookingDate, BigDecimal fare) {
@@ -44,6 +44,10 @@ public class BookingRecord {
         this.bookingDate = bookingDate;
         this.fare = fare;
         this.status = status;
+    }
+
+    public void addPassenger(String firstName, String lastName, Passenger.Gender gender) {
+        passengers.add(new Passenger(firstName, lastName, gender, this));
     }
 
 }

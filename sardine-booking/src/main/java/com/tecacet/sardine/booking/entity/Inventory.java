@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.time.LocalDate;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -19,10 +20,10 @@ public class Inventory {
 	private long id;
     
     private String flightNumber;
-    private String flightDate;
+    private LocalDate flightDate;
     private int available;
     
-    public Inventory(String flightNumber, String flightDate, int available) {
+    public Inventory(String flightNumber, LocalDate flightDate, int available) {
 		super();
 		this.flightNumber = flightNumber;
 		this.flightDate = flightDate;

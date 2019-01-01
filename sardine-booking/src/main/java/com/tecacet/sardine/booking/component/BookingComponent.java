@@ -1,5 +1,6 @@
 package com.tecacet.sardine.booking.component;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
@@ -76,13 +77,18 @@ public class BookingComponent {
     private void checkFare(BookingRecord record) {
         log.info("Calling fares to get fare");
         //call fares to get fare
-        String url = String.format("%s/fares/get?flightNumber=%s&flightDate", faresUrl,
+        String url = String.format("%s/fares/get?flightNumber=%s&flightDate=%s", faresUrl,
                 record.getFlightNumber(), record.getFlightDate());
+        log.info(url);
         Fare fare = restTemplate.getForObject(url,Fare.class);
         log.info("Retrieved fare {}", fare);
-        if (!record.getFare().equals(fare.getFare())) {
-            throw new BookingException("fare is tampered");
+        if (!equals(record.getFare(), fare.getFare())) {
+            throw new BookingException("Airfare has changed");
         }
+    }
+
+    private boolean equals(BigDecimal b1, BigDecimal b2) {
+        return (b1.subtract(b2)).abs().doubleValue() < 0.001;
     }
 
 }
