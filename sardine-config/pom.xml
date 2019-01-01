@@ -8,9 +8,10 @@
 		<version>2.1.1.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+
 	<groupId>com.tecacet</groupId>
 	<artifactId>sardine-config</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<name>sardine-config</name>
 	<description>SardineAir Configuration Server</description>
 
