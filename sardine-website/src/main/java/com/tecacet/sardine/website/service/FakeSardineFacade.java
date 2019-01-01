@@ -6,7 +6,7 @@ import com.tecacet.sardine.website.model.BookingRecord;
 import com.tecacet.sardine.website.model.CheckInRecord;
 import com.tecacet.sardine.website.model.Flight;
 
-@Service
+//@Service
 public class FakeSardineFacade implements  SardineFacade {
     @Override
     public Flight[] getFlights(SearchQuery searchQuery) {

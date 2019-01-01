@@ -7,8 +7,7 @@ import com.tecacet.sardine.website.model.BookingRecord;
 import com.tecacet.sardine.website.model.CheckInRecord;
 import com.tecacet.sardine.website.model.Flight;
 
-//TODO:
-//@Service
+@Service
 public class RestSardineFacade implements  SardineFacade {
 
     private final RestTemplate restTemplate = new RestTemplate();

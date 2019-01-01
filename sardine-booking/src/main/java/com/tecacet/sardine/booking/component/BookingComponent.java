@@ -1,10 +1,10 @@
 package com.tecacet.sardine.booking.component;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import com.tecacet.sardine.booking.entity.BookingRecord;
@@ -21,8 +21,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class BookingComponent {
 
-    //TODO: configure
-    private static final String FareURL = "http://localhost:8080/fares";
+    @Value("${fares-service.url}")
+    private String faresUrl;
 
     private final BookingRepository bookingRepository;
     private final InventoryRepository inventoryRepository;
@@ -76,8 +76,10 @@ public class BookingComponent {
     private void checkFare(BookingRecord record) {
         log.info("Calling fares to get fare");
         //call fares to get fare
-        Fare fare = restTemplate.getForObject(FareURL +"/get?flightNumber="+record.getFlightNumber()+"&flightDate="+record.getFlightDate(),Fare.class);
-        log.info("calling fares to get fare "+ fare);
+        String url = String.format("%s/fares/get?flightNumber=%s&flightDate", faresUrl,
+                record.getFlightNumber(), record.getFlightDate());
+        Fare fare = restTemplate.getForObject(url,Fare.class);
+        log.info("Retrieved fare {}", fare);
         if (!record.getFare().equals(fare.getFare())) {
             throw new BookingException("fare is tampered");
         }
