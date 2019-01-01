@@ -22,13 +22,10 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class BookingComponent {
 
-    @Value("${fares-service.url}")
-    private String faresUrl;
-
     private final BookingRepository bookingRepository;
     private final InventoryRepository inventoryRepository;
     private final Sender sender;
-    private final RestTemplate restTemplate = new RestTemplate();
+    private final FareServiceProxy fareService;
 
     public void updateStatus(BookingStatus status, long bookingId) {
         BookingRecord record = bookingRepository.findById(bookingId)
@@ -76,11 +73,7 @@ public class BookingComponent {
 
     private void checkFare(BookingRecord record) {
         log.info("Calling fares to get fare");
-        //call fares to get fare
-        String url = String.format("%s/fares/get?flightNumber=%s&flightDate=%s", faresUrl,
-                record.getFlightNumber(), record.getFlightDate());
-        log.info(url);
-        Fare fare = restTemplate.getForObject(url,Fare.class);
+        Fare fare = fareService.getFare(record.getFlightNumber(), record.getFlightDate().toString());
         log.info("Retrieved fare {}", fare);
         if (!equals(record.getFare(), fare.getFare())) {
             throw new BookingException("Airfare has changed");
