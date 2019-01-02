@@ -30,10 +30,10 @@ public class SearchComponent {
     }
 
     public void updateInventory(String flightNumber, LocalDate flightDate, int inventory) {
-        log.info("Updating inventory for flight " + flightNumber + " innventory " + inventory);
+        log.info("Updating inventory for flight {}: inventory = {} ", flightNumber, inventory);
         Flight flight =
                 flightRepository.findByFlightNumberAndFlightDate(flightNumber, flightDate)
-                        .orElseThrow(() -> new RuntimeException("Flight not found"));
+                        .orElseThrow(() -> new FlightNotFoundException());
         Inventory inv = flight.getInventory();
         inv.setCount(inventory);
         flightRepository.save(flight);

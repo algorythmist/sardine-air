@@ -24,10 +24,14 @@ public class Receiver {
     }
 
     @RabbitListener(queues = SEARCH_QUEUE)
+    //TODO: get object as message
     public void processMessage(Map<String, Object> fare) {
         log.info(fare.toString());
-        LocalDate date = LocalDate.parse((String) fare.get("FLIGHT_DATE"));
-        searchComponent.updateInventory((String) fare.get("FLIGHT_NUMBER"), date, (int) fare.get("NEW_INVENTORY"));
-        //call repository and update the fare for the given flight
+        LocalDate date =(LocalDate) fare.get("FLIGHT_DATE");
+        try {
+            searchComponent.updateInventory((String) fare.get("FLIGHT_NUMBER"), date, (int) fare.get("NEW_INVENTORY"));
+        } catch (FlightNotFoundException fne) {
+            log.error(fne.getMessage());
+        }
     }
 }
