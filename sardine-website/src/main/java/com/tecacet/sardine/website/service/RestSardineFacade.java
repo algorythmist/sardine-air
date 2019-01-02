@@ -27,7 +27,7 @@ public class RestSardineFacade implements  SardineFacade {
 
     @Override
     public long submitBooking(BookingRecord booking) {
-        return bookingClient.postForObject("http://booking-service/booking/create", booking, long.class);
+        return bookingClient.postForObject("http://booking-service/booking/create", booking, Long.class);
     }
 
     @Override

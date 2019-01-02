@@ -1,6 +1,8 @@
 package com.tecacet.sardine.website.model;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,25 +11,24 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class BookingRecord {
 
- 	private long id;
+    private long id;
     private String flightNumber;
     private String origin;
     private String destination;
-    private String flightDate;
-    private Date bookingDate;
+    private LocalDate flightDate;
+    private LocalDateTime bookingDate;
     private String fare;
     private String status;
-    Set<Passenger> passengers;
+    private Set<Passenger> passengers = new HashSet<>();
 
-	public BookingRecord(String flightNumber, String from, String to,
-                         String flightDate, Date bookingDate, String fare) {
-		this.flightNumber = flightNumber;
-		this.origin = from;
-		this.destination = to;
-		this.flightDate = flightDate;
-		this.bookingDate = bookingDate;
-		this.fare = fare;
- 	}
+    public BookingRecord(String flightNumber, String from, String to,
+                         LocalDate flightDate, LocalDateTime bookingDate, String fare) {
+        this.flightNumber = flightNumber;
+        this.origin = from;
+        this.destination = to;
+        this.flightDate = flightDate;
+        this.bookingDate = bookingDate;
+        this.fare = fare;
+    }
 
-    
 }

@@ -7,9 +7,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Fares {
 
-   	long id;
-    String fare;
-    String currency;
+   	private long id;
+    private String fare;
+    private String currency;
     
 	public Fares(String fare,String currency) {
 		super();

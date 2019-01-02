@@ -1,6 +1,7 @@
 package com.tecacet.sardine.website.model;
 
 
+import java.time.LocalDate;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -8,15 +9,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Flight {
 
-  	long id;
-	
-	String flightNumber;
-	String origin;
-	String destination;
-	String flightDate;
- 	Fares fares;
+  	private long id;
+	private String flightNumber;
+	private String origin;
+	private String destination;
+	private LocalDate flightDate;
+ 	private Fares fares;
 
-	public Flight(String flightNumber, String origin, String destination, String flightDate, Fares fares) {
+	public Flight(String flightNumber, String origin, String destination, LocalDate flightDate, Fares fares) {
 		super();
 		this.flightNumber = flightNumber;
 		this.origin = origin;

@@ -1,5 +1,7 @@
 package com.tecacet.sardine.website.controller;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -50,7 +52,8 @@ public class WebsiteController {
                             @PathVariable String fare,
                             Model model) {
         UIData uiData = new UIData();
-        Flight flight = new Flight(flightNumber, origin, destination, flightDate, new Fares(fare, "AED"));
+        LocalDate date = LocalDate.parse(flightDate);
+        Flight flight = new Flight(flightNumber, origin, destination, date, new Fares(fare, "AED"));
         uiData.setSelectedFlight(flight);
         uiData.setPassenger(new Passenger());
         model.addAttribute("uidata", uiData);
@@ -68,13 +71,8 @@ public class WebsiteController {
         pax.setBookingRecord(booking);
         passengers.add(uiData.getPassenger());
         booking.setPassengers(passengers);
-        long bookingId = 0;
-        try {
-            bookingId = sardineFacade.submitBooking(booking);
-            log.info("Booking created " + bookingId);
-        } catch (Exception e) {
-            log.error("BOOKING SERVICE NOT AVAILABLE...!!!");
-        }
+        long bookingId = sardineFacade.submitBooking(booking);
+        log.info("Booking created " + bookingId);
         model.addAttribute("message", "Your Booking is confirmed. Reference Number is " + bookingId);
         return "confirm";
     }
@@ -91,8 +89,8 @@ public class WebsiteController {
     public String searchBookingSubmit(@ModelAttribute UIData uiData, Model model) {
         Long id = new Long(uiData.getBookingid());
         BookingRecord booking = sardineFacade.findBooking(id);
-        Flight flight = new Flight(booking.getFlightNumber(), booking.getOrigin(), booking.getDestination()
-                , booking.getFlightDate(), new Fares(booking.getFare(), "AED"));
+        Flight flight = new Flight(booking.getFlightNumber(), booking.getOrigin(), booking.getDestination(),
+                booking.getFlightDate(), new Fares(booking.getFare(), "AED"));
         Passenger pax = booking.getPassengers().iterator().next();
         Passenger paxUI = new Passenger(pax.getFirstName(), pax.getLastName(), pax.getGender(), null);
         uiData.setPassenger(paxUI);
@@ -115,8 +113,8 @@ public class WebsiteController {
                             Model model) {
 
 
-        CheckInRecord checkIn = new CheckInRecord(firstName, lastName, "28C", null,
-                flightDate, flightDate, new Long(bookingid).longValue());
+        CheckInRecord checkIn = new CheckInRecord(firstName, lastName, "28C", LocalDateTime.now(),
+                flightNumber, LocalDate.parse(flightDate), Long.parseLong(bookingid));
 
         long checkinId = sardineFacade.createCheckIn(checkIn);
         model.addAttribute("message", "Checked In, Seat Number is 28c , checkin id is " + checkinId);
