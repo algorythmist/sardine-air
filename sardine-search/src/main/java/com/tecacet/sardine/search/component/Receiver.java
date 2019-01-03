@@ -1,33 +1,26 @@
 package com.tecacet.sardine.search.component;
 
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.amqp.core.Queue;
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
-import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Component;
-
 import java.time.LocalDate;
 import java.util.Map;
+import org.springframework.cloud.stream.annotation.EnableBinding;
+import org.springframework.integration.annotation.ServiceActivator;
+import org.springframework.stereotype.Component;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Component
 @RequiredArgsConstructor
 @Slf4j
+@EnableBinding(SearchSink.class)
 public class Receiver {
 
-    public static final String SEARCH_QUEUE = "SearchQ";
     private final SearchComponent searchComponent;
 
-    @Bean
-    Queue queue() {
-        return new Queue(SEARCH_QUEUE, false);
-    }
-
-    @RabbitListener(queues = SEARCH_QUEUE)
+    @ServiceActivator(inputChannel = SearchSink.INVENTORY_Q)
     //TODO: get object as message
-    public void processMessage(Map<String, Object> fare) {
+    public void accept(Map<String, Object> fare) {
         log.info(fare.toString());
-        LocalDate date =(LocalDate) fare.get("FLIGHT_DATE");
+        LocalDate date = (LocalDate) fare.get("FLIGHT_DATE");
         try {
             searchComponent.updateInventory((String) fare.get("FLIGHT_NUMBER"), date, (int) fare.get("NEW_INVENTORY"));
         } catch (FlightNotFoundException fne) {
