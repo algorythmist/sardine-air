@@ -13,7 +13,7 @@ public class Receiver {
 	
 	private final BookingComponent bookingComponent;
 
-	//@RabbitListener(queues = "CheckINQ")
+	@RabbitListener(queues = "CheckINQ")
     public void processMessage(long bookingId ) {
 		log.debug("Received booking id = {}", bookingId);
 		bookingComponent.updateStatus(BookingStatus.CHECKED_IN, bookingId);
