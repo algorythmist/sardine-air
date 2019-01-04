@@ -1,21 +1,31 @@
 package com.tecacet.sardine.booking.component;
 
+import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.rabbit.core.RabbitMessagingTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.stream.annotation.EnableBinding;
-import org.springframework.cloud.stream.annotation.Output;
-import org.springframework.messaging.MessageChannel;
-import org.springframework.messaging.support.MessageBuilder;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
+import lombok.RequiredArgsConstructor;
 
 @Component
-@EnableBinding(BookingSource.class)
+@RequiredArgsConstructor
 public class Sender {
 
-    @Autowired
-    @Output(BookingSource.INVENTORY_Q)
-    private MessageChannel messageChannel;
+    private final RabbitMessagingTemplate template;
+
+    @Bean
+    Queue queue() {
+        return new Queue("SearchQ", false);
+    }
+
+    @Bean
+    Queue queue1() {
+        return new Queue("CheckINQ", false);
+    }
+
 
     public void send(Object message) {
-        messageChannel.send(MessageBuilder.withPayload(message).build());
+        template.convertAndSend("SearchQ", message);
     }
+
 }
