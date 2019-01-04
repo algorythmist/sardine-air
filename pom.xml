@@ -25,6 +25,7 @@
     <modules>
         <module>sardine-config</module>
         <module>sardine-eureka</module>
+        <module>sardine-autoscale</module>
         <module>sardine-search</module>
         <module>sardine-fares</module>
         <module>sardine-booking</module>
