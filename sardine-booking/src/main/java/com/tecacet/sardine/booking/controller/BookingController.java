@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tecacet.sardine.booking.component.BookingComponent;
 import com.tecacet.sardine.booking.component.Sender;
 import com.tecacet.sardine.booking.entity.BookingRecord;
+import com.tecacet.sardine.booking.integration.InventorySender;
 import com.tecacet.sardine.booking.repository.BookingRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,7 +27,7 @@ public class BookingController {
 
 	private final BookingComponent bookingComponent;
 	private final BookingRepository bookingRepository;
-	private final Sender sender;
+	private final InventorySender sender;
 
 	@RequestMapping(value="/create" , method = RequestMethod.POST)
 	public long book(@RequestBody BookingRecord record){
