@@ -44,7 +44,6 @@ public class BookingController {
 		sender.send(message);
 	}
 
-
 	@RequestMapping("/get/{id}")
 	public BookingRecord getBooking(@PathVariable long id) {
 		return bookingRepository.getOne(id);
