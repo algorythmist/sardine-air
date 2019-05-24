@@ -3,30 +3,31 @@ package com.tecacet.sardine.fares.entity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.math.BigDecimal;
-import java.time.LocalDate;
 
 @Entity
 @Data
 @NoArgsConstructor
 public class Fare {
-	@Id
-	@GeneratedValue(strategy= GenerationType.AUTO)
-	private long id;
-	
-	private String flightNumber;
-	private LocalDate flightDate;
-	private BigDecimal fare;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
 
-	public Fare(String flightNumber, LocalDate flightDate, BigDecimal fare) {
-		super();
-		this.flightNumber = flightNumber;
-		this.flightDate = flightDate;
-		this.fare = fare;
-	}
-	
+    private String flightNumber;
+    private LocalDate flightDate;
+    private BigDecimal fare;
+
+    public Fare(String flightNumber, LocalDate flightDate, BigDecimal fare) {
+        super();
+        this.flightNumber = flightNumber;
+        this.flightDate = flightDate;
+        this.fare = fare;
+    }
+
 }

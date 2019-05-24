@@ -16,7 +16,7 @@ public class InventorySender {
     private MessageChannel messageChannel;
 
     public void send(Object message) {
-        System.out.println("Sending message "+ message);
+        System.out.println("Sending message " + message);
         messageChannel.send(MessageBuilder.withPayload(message).build());
     }
 }

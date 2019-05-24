@@ -1,6 +1,7 @@
 package com.tecacet.sardine.website.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

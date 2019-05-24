@@ -1,17 +1,19 @@
 package com.tecacet.sardine.search.controller;
 
-import java.util.List;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
+import com.tecacet.sardine.search.component.SearchComponent;
+import com.tecacet.sardine.search.component.SearchQuery;
+import com.tecacet.sardine.search.entity.Flight;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import com.tecacet.sardine.search.component.SearchComponent;
-import com.tecacet.sardine.search.component.SearchQuery;
-import com.tecacet.sardine.search.entity.Flight;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+
+import java.util.List;
 
 @CrossOrigin //TODO: what is this?
 @RestController

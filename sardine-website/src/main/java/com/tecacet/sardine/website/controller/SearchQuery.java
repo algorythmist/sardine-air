@@ -7,16 +7,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class SearchQuery {
 
-	private String origin;
-	private String destination;
-	private String flightDate;
+    private String origin;
+    private String destination;
+    private String flightDate;
 
-	public SearchQuery(String origin, String destination, String flightDate) {
-		super();
-		this.origin = origin;
-		this.destination = destination;
-		this.flightDate = flightDate;
-	}
+    public SearchQuery(String origin, String destination, String flightDate) {
+        super();
+        this.origin = origin;
+        this.destination = destination;
+        this.flightDate = flightDate;
+    }
 
-	
+
 }

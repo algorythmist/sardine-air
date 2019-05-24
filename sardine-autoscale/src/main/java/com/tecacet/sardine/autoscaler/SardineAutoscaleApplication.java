@@ -6,9 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class SardineAutoscaleApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SardineAutoscaleApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SardineAutoscaleApplication.class, args);
+    }
 
 }
 

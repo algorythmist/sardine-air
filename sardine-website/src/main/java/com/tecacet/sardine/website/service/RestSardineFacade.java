@@ -1,15 +1,16 @@
 package com.tecacet.sardine.website.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 import com.tecacet.sardine.website.controller.SearchQuery;
 import com.tecacet.sardine.website.model.BookingRecord;
 import com.tecacet.sardine.website.model.CheckInRecord;
 import com.tecacet.sardine.website.model.Flight;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
 @Service
-public class RestSardineFacade implements  SardineFacade {
+public class RestSardineFacade implements SardineFacade {
 
     @Autowired
     RestTemplate searchClient;

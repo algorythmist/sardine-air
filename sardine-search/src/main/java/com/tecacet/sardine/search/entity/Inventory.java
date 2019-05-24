@@ -3,7 +3,10 @@ package com.tecacet.sardine.search.entity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 
 @Entity
@@ -12,14 +15,14 @@ import javax.persistence.*;
 public class Inventory {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-	private long id;
-    
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+
     private int count;
 
-	public Inventory(int count) {
-		super();
-		this.count = count;
-	}
+    public Inventory(int count) {
+        super();
+        this.count = count;
+    }
 
 }

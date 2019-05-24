@@ -8,9 +8,9 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 @EnableEurekaServer
 public class SardineEurekaApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SardineEurekaApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SardineEurekaApplication.class, args);
+    }
 
 }
 

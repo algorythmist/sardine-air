@@ -7,14 +7,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Fares {
 
-   	private long id;
+    private long id;
     private String fare;
     private String currency;
-    
-	public Fares(String fare,String currency) {
-		super();
-		this.fare = fare;
-		this.currency = currency;
-	}
+
+    public Fares(String fare, String currency) {
+        super();
+        this.fare = fare;
+        this.currency = currency;
+    }
 
 }

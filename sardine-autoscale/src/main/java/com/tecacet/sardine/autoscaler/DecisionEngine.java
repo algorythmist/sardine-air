@@ -1,10 +1,13 @@
 package com.tecacet.sardine.autoscaler;
 
-import java.util.Map;
-import org.springframework.stereotype.Component;
 import com.tecacet.sardine.autoscaler.policy.ScalingPolicies;
 import com.tecacet.sardine.autoscaler.rules.DeploymentRules;
+
+import org.springframework.stereotype.Component;
+
 import lombok.RequiredArgsConstructor;
+
+import java.util.Map;
 
 @Component
 @RequiredArgsConstructor

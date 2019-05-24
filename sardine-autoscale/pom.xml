@@ -16,6 +16,7 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <jsch.version>0.1.55</jsch.version>
     </properties>
 
     <dependencies>
@@ -35,7 +36,6 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-eureka</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -44,7 +44,7 @@
         <dependency>
             <groupId>com.jcraft</groupId>
             <artifactId>jsch</artifactId>
-            <version>0.1.55</version>
+            <version>${jsch.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

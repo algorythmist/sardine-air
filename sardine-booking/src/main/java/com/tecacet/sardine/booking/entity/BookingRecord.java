@@ -1,5 +1,14 @@
 package com.tecacet.sardine.booking.entity;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -7,13 +16,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Entity
 @Data
@@ -35,8 +37,7 @@ public class BookingRecord {
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "bookingRecord")
     private Set<Passenger> passengers = new HashSet<>();
 
-    public BookingRecord(String flightNumber, String from, String to,
-                         LocalDate flightDate, LocalDateTime bookingDate, BigDecimal fare) {
+    public BookingRecord(String flightNumber, String from, String to, LocalDate flightDate, LocalDateTime bookingDate, BigDecimal fare) {
         this.flightNumber = flightNumber;
         this.origin = from;
         this.destination = to;

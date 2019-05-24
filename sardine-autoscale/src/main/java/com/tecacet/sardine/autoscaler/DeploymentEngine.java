@@ -1,15 +1,18 @@
 package com.tecacet.sardine.autoscaler;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.Properties;
-import org.springframework.stereotype.Component;
 import com.jcraft.jsch.ChannelExec;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.Session;
 import com.tecacet.sardine.autoscaler.rules.DeploymentRule;
+
+import org.springframework.stereotype.Component;
+
 import lombok.extern.slf4j.Slf4j;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.Properties;
 
 @Component
 @Slf4j

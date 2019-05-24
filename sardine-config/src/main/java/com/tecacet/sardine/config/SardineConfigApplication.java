@@ -8,9 +8,9 @@ import org.springframework.cloud.config.server.EnableConfigServer;
 @EnableConfigServer
 public class SardineConfigApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SardineConfigApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SardineConfigApplication.class, args);
+    }
 
 }
 

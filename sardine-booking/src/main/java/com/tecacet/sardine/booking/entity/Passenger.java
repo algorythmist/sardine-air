@@ -1,5 +1,12 @@
 package com.tecacet.sardine.booking.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.Objects;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -7,10 +14,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Entity
 @Data
@@ -20,6 +23,7 @@ public class Passenger {
     public enum Gender {
         MALE, FEMALE, OTHER
     }
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -46,10 +50,8 @@ public class Passenger {
         if (!(other instanceof Passenger)) {
             return false;
         }
-        Passenger passenger = (Passenger)other;
-        return this.firstName.equals(passenger.firstName) &&
-                this.lastName.equals(passenger.lastName) &&
-                this.gender == passenger.gender;
+        Passenger passenger = (Passenger) other;
+        return this.firstName.equals(passenger.firstName) && this.lastName.equals(passenger.lastName) && this.gender == passenger.gender;
     }
 
     @Override

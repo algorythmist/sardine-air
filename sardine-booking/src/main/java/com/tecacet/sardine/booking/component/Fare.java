@@ -1,8 +1,9 @@
 package com.tecacet.sardine.booking.component;
 
+import lombok.Data;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import lombok.Data;
 
 @Data
 public class Fare {
