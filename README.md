@@ -1,7 +1,7 @@
-#Prerequisites
+# Prerequisites
 - Install Rabbitmq https://www.rabbitmq.com/
 
-#How to Run
+# How to Run
 1. Build the project "mvn clean install"
 2. Start RabbitMQ server
 3. Start the configuration server in sardine-config: java -jar target/sardine-config-1.0.0-SNAPSHOT.jar
