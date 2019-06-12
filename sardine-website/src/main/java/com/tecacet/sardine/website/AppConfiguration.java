@@ -15,12 +15,4 @@ public class AppConfiguration {
         return new RestTemplate();
     }
 
-    @Autowired
-    RestTemplate searchClient;
-
-    @Autowired
-    RestTemplate bookingClient;
-
-    @Autowired
-    RestTemplate checkInClient;
 }

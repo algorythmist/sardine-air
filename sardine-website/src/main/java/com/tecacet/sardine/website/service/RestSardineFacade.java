@@ -12,32 +12,28 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class RestSardineFacade implements SardineFacade {
 
-    @Autowired
-    RestTemplate searchClient;
 
     @Autowired
-    RestTemplate bookingClient;
+    private RestTemplate restTemplate;
 
-    @Autowired
-    RestTemplate checkInClient;
 
     @Override
     public Flight[] getFlights(SearchQuery searchQuery) {
-        return searchClient.postForObject("http://search-service/search/get", searchQuery, Flight[].class);
+        return restTemplate.postForObject("http://search-service/search/get", searchQuery, Flight[].class);
     }
 
     @Override
     public long submitBooking(BookingRecord booking) {
-        return bookingClient.postForObject("http://booking-service/booking/create", booking, Long.class);
+        return restTemplate.postForObject("http://booking-service/booking/create", booking, Long.class);
     }
 
     @Override
     public BookingRecord findBooking(long id) {
-        return bookingClient.getForObject("http://booking-service/booking/get/" + id, BookingRecord.class);
+        return restTemplate.getForObject("http://booking-service/booking/get/" + id, BookingRecord.class);
     }
 
     @Override
     public long createCheckIn(CheckInRecord checkIn) {
-        return checkInClient.postForObject("http://checkin-service/checkin/create", checkIn, long.class);
+        return restTemplate.postForObject("http://checkin-service/checkin/create", checkIn, long.class);
     }
 }
