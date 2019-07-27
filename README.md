@@ -3,7 +3,7 @@
 
 # How to Run
 1. Build the project "mvn clean install" (optionally -DskipTests)
-2. Start RabbitMQ server
+2. Start RabbitMQ server. Admin address: http://localhost:15672/  guest/guest
 3. Start the configuration server in sardine-config: java -jar target/sardine-config-1.0.0-SNAPSHOT.jar
 4. Start the Eureka server in sardine-eureka: java -jar target/sardine-eureka-1.0.0-SNAPSHOT.jar
 5. Start the microservices:
@@ -32,3 +32,16 @@
 
    
 - Test the UI at http://localhost:8001
+
+# Set up and start elastic search
+- sudo systemctl enable elasticsearch.service
+- sudo systemctl start elasticsearch.service
+- go to localhost:9200
+- after changes: sudo systemctl restart elasticsearch
+- to stop: sudo systemctl stop elasticsearch.service
+
+- sudo systemctl enable kibana.service
+- sudo systemctl start kibana.service
+- go to localhost:5601
+
+- sudo /usr/share/logstash/bin/logstash -f logstash.conf

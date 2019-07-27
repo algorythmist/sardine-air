@@ -21,6 +21,7 @@
         <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
         <swagger2.version>2.9.2</swagger2.version>
         <spring-eureka-server.version>2.1.1.RELEASE</spring-eureka-server.version>
+        <logstash-logback.version>6.1</logstash-logback.version>
     </properties>
 
     <modules>
@@ -73,6 +74,11 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+            <version>${logstash-logback.version}</version>
         </dependency>
         <dependency>
             <groupId>io.springfox</groupId>
