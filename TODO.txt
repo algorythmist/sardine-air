@@ -1,0 +1,4 @@
+- Congigure gateways (Chapter 5)
+- Complete load balancing (Chapter 6)
+- Set up correlation ID /trace with Sleuth (Chapter 7)
+- Add Hystrix and Turbine (Chapter 7)

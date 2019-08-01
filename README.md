@@ -26,7 +26,7 @@
 
 # Testing the application
 
-- Access actuator endoints: http://localhost:<port>/actuator/
+- Access actuator endpoints: http://localhost:<port>/actuator/
 - To see the the default configuration: http://localhost:8888/application/default/master
 - To examine ms specific configurations: http://localhost:8888/booking-service/default/master
 
@@ -45,3 +45,6 @@
 - go to localhost:5601
 
 - sudo /usr/share/logstash/bin/logstash -f logstash.conf
+
+# Docker
+docker run -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer
